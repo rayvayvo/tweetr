@@ -3,13 +3,6 @@ main textarea {
     width: 100%;
 }
 
-main h2{
-    text-align: left;
-    border-bottom: 1px solid black;
-    margin: 0 0 1em 0;
-
-
-}
 main section {
     border-radius: 5px;
     background-color: #dddddd;
@@ -18,6 +11,49 @@ main section {
 
 }
 
+.tweet-articles {
+    margin: 0 2em 0 2em;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+}
+
+.tweet-header {
+    background-color: #dddddd;
+    height: 4.25em;
+}
+
+.tweet-footer {
+    border-top: 1px solid #eeeeee;
+    margin: 0.5em 0 0.5em 0;
+    padding-left: 0.5em;
+    font-size: 50%;
+}
+
+.tweet-user {
+    float: right;
+    padding-top: 1em;
+}
+
+.tweet-logo {
+    float: left;
+    height: 50px;
+    width:  50px;
+    background-color: #bbffbb;
+    margin: 0.5em;
+    border-radius: 10px;
+}
+
 .counter {
   float: right;
+}
+
+.tweet-header h2{
+    text-align: left;
+    margin: 0;
+    padding-top: 0.5em;
+    float:left;
+}
+
+.tweet-body h3{
+    padding-left: 0.5em;
 }
