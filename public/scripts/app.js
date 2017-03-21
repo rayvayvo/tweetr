@@ -56,8 +56,15 @@ $( document ).ready(function() {
   }
   ];
 
+function escape(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 function renderTweets(tweets) {
 let newDOM = ""
+
   tweetData.forEach((tweets) => {
     newDOM += createTweetElement(tweets);
 
@@ -66,22 +73,24 @@ return newDOM;
 }
 
 function createTweetElement(tweets) {
+
   var article = `<article class="tweet-articles">
           <header class="tweet-header">
-          <img class="tweet-logo" src="${tweets.user.avatars.small}">
-            <h2>${tweets.user.name}</h2>
-            <span class="tweet-user">${tweets.user.handle}</span>
+          <img class="tweet-logo" src="${escape(tweets.user.avatars.small)}">
+            <h2>${escape(tweets.user.name)}</h2>
+            <span class="tweet-user">${escape(tweets.user.handle)}</span>
           </header>
           <body class= "tweet-body">
-            <h3>${tweets.content.text}</h3>
+            <h3>${escape(tweets.content.text)}</h3>
           </body>
           <footer class="tweet-footer">
-          <h4>${tweets.created_at}</h4>
+          <h4>${new Date(tweets.created_at)}</h4>
           </footer>
         </article>`;
 
+// $("<div>").text(textFromUser);
+
 var $tweet = article;
-console.log(article);
 $('.container').append($tweet);
 
   return $tweet;
