@@ -56,6 +56,38 @@ $( document ).ready(function() {
   }
   ];
 
+  $( "#submitTweet" ).on( "click", function( event ) {
+        event.preventDefault();
+        console.log( $( this ).serialize() );
+    // let $textbox = $(".container textarea")
+    let $tweetError = $("#tweetError")
+    let character = parseInt($(".counter").text());
+    // let counter = parseInt(string, radix);
+
+     if (character === 140) {
+      $tweetError.text("write something to submit");
+        setTimeout(errorMsg, 2000);
+
+     } else if (character < 1){
+      $tweetError.text("too long. shorten to try");
+        setTimeout(errorMsg2, 2000);
+
+     } else {
+        $tweetError.text("");
+
+     }
+
+    function errorMsg2(){
+    $tweetError.text("");
+    }
+
+    function errorMsg(){
+    $tweetError.text("");
+    }
+  });
+
+
+
   function escape(str) {
     var div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
@@ -100,7 +132,10 @@ loadTweets();
             </footer>
           </article>`;
 
-  // $("<div>").text(textFromUser);
+//change the new Date to show how long ago it was posted instead of the extact time it was. eg: "posted 5 days ago"
+//instead of "posted @ 12/12/2000"
+
+// $("<div>").text(textFromUser);
 
   var $tweet = article;
   $('.container').append($tweet);
