@@ -56,47 +56,59 @@ $( document ).ready(function() {
   }
   ];
 
-function escape(str) {
-  var div = document.createElement('div');
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-}
+  function escape(str) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
 
-function renderTweets(tweets) {
-let newDOM = ""
+  function loadTweets() {
 
-  tweetData.forEach((tweets) => {
-    newDOM += createTweetElement(tweets);
+        $.ajax({
+          url: '/tweets',
+          method: 'GET',
+          success: renderTweets
+          })
+  }
 
-  })
-return newDOM;
-}
 
-function createTweetElement(tweets) {
+loadTweets();
 
-  var article = `<article class="tweet-articles">
-          <header class="tweet-header">
-          <img class="tweet-logo" src="${escape(tweets.user.avatars.small)}">
-            <h2>${escape(tweets.user.name)}</h2>
-            <span class="tweet-user">${escape(tweets.user.handle)}</span>
-          </header>
-          <body class= "tweet-body">
-            <h3>${escape(tweets.content.text)}</h3>
-          </body>
-          <footer class="tweet-footer">
-          <h4>${new Date(tweets.created_at)}</h4>
-          </footer>
-        </article>`;
+  function renderTweets(tweets) {
+  let newDOM = ""
 
-// $("<div>").text(textFromUser);
+    tweetData.forEach((tweets) => {
+      newDOM += createTweetElement(tweets);
 
-var $tweet = article;
-$('.container').append($tweet);
+    })
+  return newDOM;
+  }
 
-  return $tweet;
-};
-// var $tweet = createTweetElement(tweetData);
-renderTweets(tweetData);
+  function createTweetElement(tweets) {
+
+    var article = `<article class="tweet-articles">
+            <header class="tweet-header">
+            <img class="tweet-logo" src="${escape(tweets.user.avatars.small)}">
+              <h2>${escape(tweets.user.name)}</h2>
+              <span class="tweet-user">${escape(tweets.user.handle)}</span>
+            </header>
+            <body class= "tweet-body">
+              <h3>${escape(tweets.content.text)}</h3>
+            </body>
+            <footer class="tweet-footer">
+            <h4>${new Date(tweets.created_at)}</h4>
+            </footer>
+          </article>`;
+
+  // $("<div>").text(textFromUser);
+
+  var $tweet = article;
+  $('.container').append($tweet);
+
+    return $tweet;
+  };
+  // var $tweet = createTweetElement(tweetData);
+  // renderTweets(tweetData);
 
 
 });
