@@ -21,3 +21,19 @@
   height: 80px;
   float: left;
 }
+
+#compose:hover {
+    border: 4px solid blue;
+}
+
+#compose {
+  float: right;
+  width: 100px;
+  height: 70px;
+  margin-top: 5px;
+  border-radius: 5px;
+  background-color: lightblue;
+  font-size: 45%;
+  font-weight: bold;
+  line-height: 5px;
+}
