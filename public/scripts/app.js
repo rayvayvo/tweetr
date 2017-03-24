@@ -105,7 +105,10 @@ console.log($("#newTweetText").serialize());
               <h3>${escape(tweets.content.text)}</h3>
             </body>
             <footer class="tweet-footer">
-            <h4>${time}</h4>
+              <h4>${time}</h4>
+              <img class="like" src="/images/like.jpg">
+              <img class="share" src="/images/share.jpg">
+              <img class="report" src="/images/report.png">
             </footer>
           </article>`;
 

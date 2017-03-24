@@ -33,6 +33,7 @@ main section {
     margin: 0.5em 0 0.5em 0;
     padding-left: 0.5em;
     font-size: 50%;
+    height: 30px;
 }
 
 .tweet-user {
@@ -58,6 +59,21 @@ main section {
     border: 1px solid black;
 }
 
+.tweet-articles:hover img{
+    opacity: 1;
+}
+
+.tweet-footer img {
+    height: 15px;
+    width: 15px;
+    float: right;
+    margin: 0.5em;
+    opacity: 0;
+}
+
+
+
+
 .new-tweet h2 {
     margin: 0 0 0.5em 0;
     border-bottom: solid 1px black;
@@ -67,6 +83,10 @@ main section {
     text-align: left;
     margin: 0;
     float:left;
+}
+
+.tweet-footer h4 {
+    float: left;
 }
 
 .tweet-body h3{
@@ -81,3 +101,4 @@ main section {
     padding-left: 1em;
     color: #ff0000;
 }
+
