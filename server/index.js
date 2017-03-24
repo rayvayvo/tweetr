@@ -25,17 +25,11 @@ app.use(express.static("public"));
 // require it and pass the `db` parameter immediately:
 MongoClient.connect(MONGODB_URI, (err, db) => {
 
-  // db.collection("tweets").find({}, (err, results) => {
-  //         if (err) throw err;
-  //         results.toArray((err, db) => {
-  //           console.log("result.toArray", db)
-  //             if (err) throw err;
-  //         });
+
   const DataHelpers = require("./lib/data-helpers.js")(db);
   const tweetsRoutes = require("./routes/tweets")(DataHelpers);
   app.use("/tweets", tweetsRoutes);
 
-  // })
 })
 
 

@@ -79,8 +79,6 @@ console.log($("#newTweetText").serialize());
 
       newDOM += createTweetElement(tweets);
     })
-
-  // return newDOM;
   }
 
   function createTweetElement(tweets) {
@@ -97,7 +95,7 @@ console.log($("#newTweetText").serialize());
     }
     var article = `<article class="tweet-articles">
             <header class="tweet-header">
-            <img class="tweet-logo" src="${escape(tweets.user.avatars.small)}">
+              <img class="tweet-logo" src="${escape(tweets.user.avatars.small)}">
               <h2>${escape(tweets.user.name)}</h2>
               <span class="tweet-user">${escape(tweets.user.handle)}</span>
             </header>
@@ -115,15 +113,12 @@ console.log($("#newTweetText").serialize());
 //change the new Date to show how long ago it was posted instead of the extact time it was. eg: "posted 5 days ago"
 //instead of "posted @ 12/12/2000"
 
-// $("<div>").text(textFromUser);
 
   var $tweet = article;
   $('.new-tweet').after($tweet);
 
     return $tweet;
   };
-  // var $tweet = createTweetElement(tweetData);
-  // renderTweets(tweetData);
 
 loadTweets();
 
