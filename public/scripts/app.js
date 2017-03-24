@@ -8,6 +8,7 @@
 
 $( document ).ready(function() {
 
+  $(".new-tweet").slideUp();
 
   $( "#submitTweet" ).on( "click", function( event ) {
         event.preventDefault();
@@ -63,7 +64,6 @@ console.log($("#newTweetText").serialize());
 
   $("#compose").click(function(){
     let newTweet = $(".new-tweet")
-
     if ($(newTweet).is(":visible")) {
     newTweet.slideUp();
     } else {
@@ -73,18 +73,28 @@ console.log($("#newTweetText").serialize());
 });
 
   function renderTweets(tweetRend) {
-
   let newDOM = "";
-
+  $(".tweet-articles").empty();
     tweetRend.forEach((tweets) => {
+
       newDOM += createTweetElement(tweets);
     })
 
-  return newDOM;
+  // return newDOM;
   }
 
   function createTweetElement(tweets) {
+    let time = Math.floor((new Date - (new Date(tweets.created_at)))/ 864000);
 
+    if (time < 1) {
+      time = `Created just now`
+    } else if (time > 0 && time < 60) {
+      time = `Created ${(time)} minutes ago`;
+    } else if (time > 60 && time < 1440) {
+      time = `Created ${Math.ceil((time)/60)} hours ago`;
+    } else {
+      time = `Created ${(time)/1400} days ago`;
+    }
     var article = `<article class="tweet-articles">
             <header class="tweet-header">
             <img class="tweet-logo" src="${escape(tweets.user.avatars.small)}">
@@ -95,7 +105,7 @@ console.log($("#newTweetText").serialize());
               <h3>${escape(tweets.content.text)}</h3>
             </body>
             <footer class="tweet-footer">
-            <h4>${new Date(tweets.created_at)}</h4>
+            <h4>${time}</h4>
             </footer>
           </article>`;
 
